@@ -1,9 +1,9 @@
 #include <iostream>
 #include <queue>
 #include <cstring>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
-
-
 
 int y_ar[4] = { 0,0,-1,1 };
 int x_ar[4] = { 1,-1,0,0 };
@@ -13,9 +13,8 @@ int dist[125][125];
 
 void dijkstra() 
 {
-
 	priority_queue <pair<int, pair<int, int>>> pq;
-	pq.push(make_pair(1 * arr[0][0], make_pair(0, 0)));
+	pq.push(make_pair(-1 * arr[0][0], make_pair(0, 0)));
 	dist[0][0] = arr[0][0];
 
 	while (!pq.empty()) 
@@ -39,7 +38,7 @@ void dijkstra()
 				if (before_v > current_v) 
 				{
 					dist[ny][nx] = current_v;
-					pq.push(make_pair(1 * current_v, make_pair(ny, nx)));
+					pq.push(make_pair(-1 * current_v, make_pair(ny, nx)));
 				}
 			}
 		}
